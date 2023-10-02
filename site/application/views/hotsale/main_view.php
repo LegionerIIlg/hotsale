@@ -52,7 +52,27 @@
                     </a>
                 </div>
             </div>
+            <form  action="/search/" id='form-search' 
+                   class="w-100"
+                   
+                                       method="POST" onsubmit="return functionSeachInTable(this)">
+                                    
+                                    
+<div class="input-group mb-3">
+    <input type="text" name="q" class="form-control" placeholder=""  aria-describedby="button-addon2">
+    <button class="btn btn-secondary" type="submit" id="button-addon2">Шукати</button>
+</div>
 
+                                   
+
+
+                                 
+
+                                   
+                                </form>
+         
+            
+            
             <div class="table-responsive">
                 <table class="table table-bordered table-hover ">
                     <thead>
@@ -192,7 +212,7 @@
                                         <input type="email" 
                                                placeholder=""
                                                name="email" value="" required="true"
-                                               class="form-control" id="changeEmail1" aria-describedby="emailHelp">
+                                               class="form-control" id="changeEmail" aria-describedby="emailHelp">
                                     </div>
 
                                     <button type="submit"    class="btn btn-success float-end pt-3 pb-3 mt-3">Зберегти</button>

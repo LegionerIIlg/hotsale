@@ -70,7 +70,7 @@ function addNewUser(action){
 function saveChangeUser(action){
     let $form = $(action);
     let $modal=$('#modalChange');   
-    let $email = $('#changeEmail1').val();
+    let $email = $('#changeEmail').val();
     let $paswdone = $('#changePassword').val(); 
  
  
@@ -200,13 +200,14 @@ function functionDestroy(action){
 function functionSeachInTableSmall(){
 
  let $tbody = $('#tbody-users');
- 
+ let  $form = $('#form-search');
 
     $.ajax({
-            url:  '/search/?q=1',
-            type: 'GET',
+            url:  '/search/',
+            type: 'POST',
             cache: false,
             dataType: "JSON",
+            data: $form.serialize(),
             beforeSend: function () {
               
             },
@@ -226,16 +227,18 @@ function functionSeachInTableSmall(){
         return false;
 }
 
-function functionSeachInTable(){
+function functionSeachInTable(form){
 
  let $tbody = $('#tbody-users');
+ let  $form = $(form);
  
 
     $.ajax({
-            url:  '/search/?q=1',
-            type: 'GET',
+            url:  '/search/',
+            type: 'POST',
             cache: false,
             dataType: "JSON",
+            data: $form.serialize(),
             beforeSend: function () {
                 load__show();
             },
@@ -244,6 +247,49 @@ function functionSeachInTable(){
                 $tbody.empty();
                if($data.html){
                   $tbody.html($data.html);
+                }
+            },
+            error: function ($data) {
+                load__hide();
+                error__view($data);
+            }
+        })
+    
+        return false;
+}
+
+
+
+function functionChangeMain(action){
+
+
+   let $action = $(action);
+    let $tr=$action.parents('tr');   
+    let $id = $tr.data('id'); 
+     let $modal=$('#modalChange'); 
+    $('#changeRecord').val($id);
+  
+
+    $.ajax({
+            url:  '/change/?record='+$id,
+            type: 'GET',
+            cache: false,
+            dataType: "JSON",
+            beforeSend: function () {
+                load__show();
+            },
+            success: function ($data) {
+                load__hide();
+             
+               if($data.danue){
+                   $modal.modal('show');
+                   
+                    $('#changeName').val($data.danue.name);
+                    $('#changeSurname').val($data.danue.surname);
+                    $('#changeEmail').val($data.danue.email);
+                    
+                   
+                   
                 }
             },
             error: function ($data) {
