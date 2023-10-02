@@ -58,10 +58,11 @@
                                        method="POST" onsubmit="return functionSeachInTable(this)">
                                     
                                     
-<div class="input-group mb-3">
+<div class="input-group ">
     <input type="text" name="q" class="form-control" placeholder=""  aria-describedby="button-addon2">
     <button class="btn btn-secondary" type="submit" id="button-addon2">Шукати</button>
 </div>
+                <p class="text-muted mb-5">Пошук проподиться по: ім'я, прізвище, email, пароль</p>
 
                                    
 

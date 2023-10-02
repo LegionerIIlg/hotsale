@@ -8,7 +8,7 @@
                                    <tr data-id='<?= $v['id']; ?>'>
                                        <th><?= $v['id']; ?></th>
                                        <td><?= $v['name']; ?></td>
-                                       <th><?= $v['surname']; ?></th>
+                                       <td><?= $v['surname']; ?></td>
                                        <td><?= $v['email']; ?></td>
                                        <td><?= $v['paswrd']; ?></td>
 

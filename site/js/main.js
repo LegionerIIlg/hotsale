@@ -56,6 +56,7 @@ function addNewUser(action){
                if($data.success){
                    $modal.modal('hide');
                    sucses__view($data.success);
+                   $form.find('input').val();
                    functionSeachInTableSmall();
                 }
             },
