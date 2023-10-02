@@ -55,6 +55,10 @@ $route['change'] = 'main/change';
 $route['savechange'] = 'main/savechange';
 $route['destroy'] = 'main/destroy';
 
+$route['search'] = 'main/get_search_table';
+
+
+
 
 $route['passwordchange'] = 'main/paswordsave';
 

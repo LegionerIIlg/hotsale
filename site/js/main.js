@@ -55,7 +55,8 @@ function addNewUser(action){
                 load__hide();
                if($data.success){
                    $modal.modal('hide');
-                   sucses__view($data.success); 
+                   sucses__view($data.success);
+                   functionSeachInTableSmall();
                 }
             },
             error: function ($data) {
@@ -92,6 +93,7 @@ function saveChangeUser(action){
                if($data.success){
                    $modal.modal('hide');
                    sucses__view($data.success); 
+                   functionSeachInTableSmall();
                 }
             },
             error: function ($data) {
@@ -146,6 +148,7 @@ function savePassword(action){
                if($data.success){
                    $modal.modal('hide');
                    sucses__view($data.success); 
+                   functionSeachInTableSmall();
                 }
             },
             error: function ($data) {
@@ -180,6 +183,8 @@ function functionDestroy(action){
                if($data.success){
                   
                    sucses__view($data.success); 
+                   
+                   functionSeachInTableSmall();
                 }
             },
             error: function ($data) {
@@ -188,5 +193,64 @@ function functionDestroy(action){
             }
         })
     }
+        return false;
+}
+
+
+function functionSeachInTableSmall(){
+
+ let $tbody = $('#tbody-users');
+ 
+
+    $.ajax({
+            url:  '/search/?q=1',
+            type: 'GET',
+            cache: false,
+            dataType: "JSON",
+            beforeSend: function () {
+              
+            },
+            success: function ($data) {
+           
+                $tbody.empty();
+               if($data.html){
+                  $tbody.html($data.html);
+                }
+            },
+            error: function ($data) {
+              
+                error__view($data);
+            }
+        })
+    
+        return false;
+}
+
+function functionSeachInTable(){
+
+ let $tbody = $('#tbody-users');
+ 
+
+    $.ajax({
+            url:  '/search/?q=1',
+            type: 'GET',
+            cache: false,
+            dataType: "JSON",
+            beforeSend: function () {
+                load__show();
+            },
+            success: function ($data) {
+                load__hide();
+                $tbody.empty();
+               if($data.html){
+                  $tbody.html($data.html);
+                }
+            },
+            error: function ($data) {
+                load__hide();
+                error__view($data);
+            }
+        })
+    
         return false;
 }

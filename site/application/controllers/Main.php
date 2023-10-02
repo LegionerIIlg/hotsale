@@ -39,10 +39,29 @@ class Main extends CI_Controller {
           
             $d = array();
            $d['tble_users'] = $tble_users;
+          $d['tbody'] =  $this->load->view($this->mainView.'tmpl/tbody_view', $d, true);
+            
             
           $this->load->view($this->mainView.'main_view', $d);
 	}
         
+        
+        
+           public function get_search_table()
+	{
+
+        
+        
+        
+          $this->load->model('main_model');
+          $tble_users= $this->main_model->get_table_();
+          
+           $d = array();
+           $d['tble_users'] = $tble_users;
+          
+          $this->sdjson->html = $this->load->view($this->mainView.'tmpl/tbody_view', $d, true);
+           return $this->sdjson->send_form();
+	}
         
         
         
